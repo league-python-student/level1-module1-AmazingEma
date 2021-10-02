@@ -46,6 +46,26 @@ if __name__ == '__main__':
     # TODO 6) use a loop to repeat the previous instructions and create
     #  8 turtles lined up on the left side of the screen
     #  *HINT* click on the window to print the corresponding x, y location
+    turtles = []
+    turx = -375
+    tury = 190
+    for i in range(8):
+        i_turtle = turtle.Turtle()
+        i_turtle.speed(3)
+        i_turtle.penup()
+        i_turtle.goto(turx, tury)
+        turtles.append(i_turtle)
+        tury -= 54
+    race = True
+    while race:
+        for f in range(8):
+            if turtles[f].xcor() > 395:
+                print("turtle " + str(f + 1) + " won the race!")
+
+                race = False
+                break
+            r = random.randint(1,20)
+            turtles[f].forward(r)
 
     # TODO 7) Move each turtle forward a random distance between 1 and 20
 
