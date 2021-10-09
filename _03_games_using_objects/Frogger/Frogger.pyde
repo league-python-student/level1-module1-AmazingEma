@@ -1,7 +1,7 @@
 
 def setup():
     # 1. Use the size function to set the size of your sketch
-
+    size (800,600)
     # 2. Create 2 global variables for the background and the frog
     # using the loadImage("frog.png") function. For example:
     # global bg, frog
@@ -13,15 +13,32 @@ def setup():
     
 def draw():
     # 4. Use the background function to draw the background
-    
+    background(0)
+    fill(60,120,30);
+    ellipse(700, 500, 100, 100);
     # 5. Use the image function to draw the frog.
     # Run the program and check the background and frog are displayed.
 
     # 6. Create global frog_x and frog_y variables in the setup function
     # and use them when drawing the frog. You will also have to put the
     # following in the draw function:
-    # global frog_x, frog_y
+    global frog_x, frog_y
     
+def keyPressed():
+    global frog_x, frog_y
+    if key == CODED:
+        if keyCode == UP:
+            # Frog Y position goes up
+            print("up")
+        elif keyCode == DOWN:
+            # Frog Y position goes down
+            print("down")
+        elif keyCode == RIGHT:
+            # Frog X position goes right
+            print("right")
+        elif keyCode == LEFT:
+            # Frog X position goes left
+            print("left")
     # 7. Use the Car class below to create a global car object in the
     # setup function and call the update and draw functions here.
     

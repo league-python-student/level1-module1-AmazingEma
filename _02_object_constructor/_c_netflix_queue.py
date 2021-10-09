@@ -44,8 +44,30 @@ if __name__ == '__main__':
     # Use Movie and NetflixQueue classes above to complete the following changes:
 
     # TODO 1) Instantiate (create) at least 5 Movie objects.
+    movieone = Movie("a",0)
+    movietwo = Movie("Twilight",4)
+    moviethree = Movie("s",5)
+    moviefour = Movie("k",2)
+    moviefive = Movie("w",3)
     # TODO 2) Use the Movie class to get the ticket price of one of your movies.
+    movieone.get_ticket_price()
+    movietwo.get_ticket_price()
+    moviethree.get_ticket_price()
+    moviefour.get_ticket_price()
+    moviefive.get_ticket_price()
     # TODO 3) Instantiate a NetflixQueue object.
+    que = NetflixQueue()
+    que.add_movie(movieone)
+    que.add_movie(movietwo)
+    que.add_movie(moviethree)
+    que.add_movie(moviefour)
+    que.add_movie(moviefive)
+    que.print_movies()
+    v = que.get_best_movie()
+    print("the best movie is" + v.to_string())
+    que.sort_movies_by_rating()
+    h = que.get_movie(1)
+    print("", h.to_string())
     # TODO 4) Add your movies to the Netflix queue.
     # TODO 5) Print all the movies in your queue.
     # TODO 6) Use your NetflixQueue object to finish the sentence "the best movie is...."
