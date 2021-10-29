@@ -4,18 +4,22 @@ Create a single player Pong game
 from Ball import Ball
 from Paddle import Paddle
 global started
+global score
+score = 0
 started = False
 
 def setup():
     pass
     # 1. Set the size of your window to at least width = 800, height = 600
-
+    size(800,600)
     # 2. Make a global ball variable, for example:
     
     # 3. Initialize your ball variable to a new Ball(), for example:
-    
+    global ball
+    ball = Ball(x=100)
     # 4. Make a global paddle variable.
-    
+    global paddle
+    paddle = Paddle(400)
     # 5. Initialize your paddle variable to a new Paddle() for example:
     
 def draw():
@@ -27,25 +31,37 @@ def draw():
     
     # 6. Use the background() function to set the background color.
     #    background(0) will set a classic black background
-
+    background(0)
     # 7. Call the ball object's update() and draw() methods.
     #    Do you see the ball moving on the screen?
-
+    ball.update()
+    ball.draw()
     # 8. Call the paddle object's update() and draw() methods.
     #    Do you see the paddle on the screen?
+    paddle.update()
+    paddle.draw()
 
     # 11. Finish the code in keyPressed() and keyReleased() first!
     #     Call the ball object's collision() method and pass the
     #     paddle object as an input variable.
     #     Does the ball bounce off the paddel?
-
+    ball.collision(paddle)
     # 12. End the game when the ball goes below the bottom of the screen.
     #     You can use noLoop() to freeze the game and text() to print text
     #     on the screen.
+    if ball.y > 600:
+        noLoop()
+        fill(255,879,465)
+        text('you lose', 400,300)
+        
 
     # 13. Figure out how to add a score to the game so every bounce off
     #     the paddle increases the player socre
-
+    global score
+    if ball.collision(paddle):
+        score += 1
+    fill(23,84,19)
+    text ("your score is " + str(score), 100,100)
     # *EXTRA*
     # Can you figure out how to make a 2 player pong game with paddles on
     # the left and right on the screen?
@@ -60,7 +76,9 @@ def keyPressed():
         started = True 
     elif key == CODED:
         if keyCode == LEFT:
-            
+            paddle.x_speed = -7
+        elif keyCode == RIGHT:
+            paddle.x_speed = 7
             pass
 
 
@@ -68,4 +86,5 @@ def keyPressed():
 #     Does the paddle stop when the keys are released?
 def keyReleased():
     if key == CODED:
+        paddle.x_speed = 0
         pass

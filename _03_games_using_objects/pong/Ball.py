@@ -39,6 +39,7 @@ class Ball():
 
     def collision(self, paddle):
         side = None
+        collided = False
 
         # Temporary variables to set edges for testing
         edge_x = self.x
@@ -66,6 +67,7 @@ class Ball():
         if distance <= self.radius:
             if not self.currently_intersects:
                 self.currently_intersects = True
+                collided = True
     
                 self.x_speed += 2
                 self.y_speed += 2
@@ -85,3 +87,5 @@ class Ball():
             # Resetting the variable here ensures there's only 1 change of
             # direction until the ball and paddle no longer intersect 
             self.currently_intersects = False
+            
+        return collided
